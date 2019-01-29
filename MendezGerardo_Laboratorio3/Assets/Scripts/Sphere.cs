@@ -45,8 +45,9 @@ public class Sphere : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Danger" && GMS.coins < 2)
+        if (collision.gameObject.tag == "Danger" && GMS.coins <= 2)
             gameObject.SetActive(false);
             rsp.alive = false;
+            GetComponent<Rigidbody>().AddForce(0, 0, 0);
     }
 }
