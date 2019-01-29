@@ -36,15 +36,15 @@ public class Sphere : MonoBehaviour
         if (Input.GetKey(KeyCode.S))
             z += force;
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && Mathf.Abs(GetComponent<Rigidbody>().velocity.y) < 0.005f)
             GetComponent<Rigidbody>().AddForce(Vector3.up * verticalForce, ForceMode.Impulse);
 
         GetComponent<Rigidbody>().AddForce(x, 0, z);
 
     }
 
-    private void OnCollisionEnter()
-    {   
+    private void OnCollisionEnter(Collision collision)
+    {
         if (collision.gameObject.tag == "Danger" && GMS.coins < 2)
             gameObject.SetActive(false);
             rsp.alive = false;
