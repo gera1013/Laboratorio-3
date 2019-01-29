@@ -7,7 +7,7 @@ using UnityEngine;
 public class Sphere : MonoBehaviour
 {
     private int force = 10;
-    private int verticalForce = 4;
+    private int verticalForce = 6;
     public bool alive = true;
     private GameManagerScript GMS;
     private Respawn rsp;
@@ -48,6 +48,5 @@ public class Sphere : MonoBehaviour
         if (collision.gameObject.tag == "Danger" && GMS.coins <= 2)
             gameObject.SetActive(false);
             rsp.alive = false;
-            GetComponent<Rigidbody>().AddForce(0, 0, 0);
     }
 }
